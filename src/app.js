@@ -4,8 +4,7 @@ const app = express();
 const PORT = 3000;
 
 /*
-  Lista com os integrantes do grupo.
-  Os nomes completos são utilizados para identificação na avaliação.
+ Lista com os integrantes do grupo.
 */
 const data = {
   integrantes: [
@@ -16,14 +15,21 @@ const data = {
 };
 
 /*
-  Endpoint que retorna os integrantes em formato JSON.
+ Endpoint principal que retorna o HTML.
+*/
+app.get('/', (req, res) => {
+  res.sendFile('views/index.html', { root: __dirname });
+});
+
+/*
+ Endpoint que retorna os integrantes em formato JSON.
 */
 app.get('/integrantes', (req, res) => {
   res.json(data);
 });
 
 /*
-  Inicialização do servidor.
+ Inicialização do servidor.
 */
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
